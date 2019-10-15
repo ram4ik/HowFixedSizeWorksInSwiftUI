@@ -9,8 +9,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var width: CGFloat = 100
+    @State var horizaontal = true
+    @State var vertical = false
     var body: some View {
-        Text("Hello World")
+        VStack {
+            Text("This sample shows how fixedSize works")
+                .fixedSize(horizontal: horizaontal, vertical: vertical)
+                .border(Color.blue)
+                .frame(width:width, height: 100)
+                .border(Color.green)
+                .font(.title)
+            
+            Slider(value: $width, in: 100...500)
+            Toggle(isOn: $horizaontal) { Text("Horizontal") }
+            Toggle(isOn: $vertical)  { Text("Vertical") }
+        }
     }
 }
 
